@@ -1,0 +1,43 @@
+; Initialize the stack pointer to a new base address
+ldc 0x2000
+a2sp
+
+; Load the address of the first number in the sequence
+ldc values
+stl 0 ; Store the address in memory at SP + 0
+
+; Set the initial total sum to zero
+ldc 0
+stl 1 ; Store the sum (0) in memory at SP + 1
+
+; Start summing the numbers in the list
+start_loop:
+ldl 0 ; Load the address of the current number into the accumulator
+ldnl 0 ; Fetch the value at the current address into the accumulator
+ldl 1 ; Load the current sum into the accumulator
+add   ; Add the current number to the sum
+stl 1 ; Store the updated sum in memory at SP + 1
+ldc 1 ; Load the constant 1 into the accumulator
+ldl 0 ; Load the current address into the accumulator
+add   ; Increment the address to point to the next number in the list
+stl 0 ; Store the new address in memory at SP + 0
+ldl 0 ; Load the new address into the accumulator
+ldnl 0 ; Fetch the value at the new address into the accumulator
+brz finish ; If the value is 0 (indicating end of list), branch to finish
+br start_loop ; Otherwise, continue the loop
+
+finish:
+ldl 1 ; Load the final accumulated sum into the accumulator
+ldc 0;
+stnl 0; ; Store the sum at the address indicated by the new label
+
+HALT ; End the program execution
+
+; Data section
+values:
+data 1
+data 7
+data 4
+data 3
+data 8
+data 0 ; Sentinel value to indicate end of list

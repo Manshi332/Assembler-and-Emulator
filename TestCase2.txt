@@ -1,0 +1,18 @@
+ldc -5           ; Load 5 into A (can replace 5 with any test value)
+brz Check_Zero   ; Branch to Check_Zero if A == 0
+brlz Check_Negative ; Branch to Check_Negative if A < 0
+br Positive      ; If A > 0, branch to Positive
+
+Check_Zero: 
+    ldc 0        ; Load 0 into A (representing zero case)
+    br End       ; Jump to End
+
+Check_Negative:
+    ldc -1       ; Load -1 into A (representing negative case)
+    br End       ; Jump to End
+
+Positive: 
+    ldc 1        ; Load 1 into A (representing positive case)
+
+End: 
+    HALT         ; End the program

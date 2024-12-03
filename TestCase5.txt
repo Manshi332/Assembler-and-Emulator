@@ -1,0 +1,43 @@
+; Find the minimum of 6 numbers
+ldc a         ; Load the first number into A
+stl 0         ; Store it in a temporary variable (local offset 0)
+
+ldc b         ; Load the second number into A
+ldl 0         ; Load the temporary variable into B
+brlz min1     ; If b < temp, branch to min1
+stl 0         ; Otherwise, store b as the new minimum
+
+min1:
+ldc c         ; Load the third number into A
+ldl 0         ; Load the current minimum into B
+brlz min2     ; If c < temp, branch to min2
+stl 0         ; Otherwise, store c as the new minimum
+
+min2:
+ldc d         ; Load the fourth number into A
+ldl 0         ; Load the current minimum into B
+brlz min3     ; If d < temp, branch to min3
+stl 0         ; Otherwise, store d as the new minimum
+
+min3:
+ldc e         ; Load the fifth number into A
+ldl 0         ; Load the current minimum into B
+brlz min4     ; If e < temp, branch to min4
+stl 0         ; Otherwise, store e as the new minimum
+
+min4:
+ldc f         ; Load the sixth number into A
+ldl 0         ; Load the current minimum into B
+brlz done     ; If f < temp, branch to done
+stl 0         ; Otherwise, store f as the final minimum
+
+done:
+HALT          ; End of program
+
+; Data values
+a: SET 20
+b: SET 4
+c: SET 15
+d: SET 8
+e: SET 10
+f: SET 12

@@ -1,0 +1,20 @@
+;sum of 6 numbers
+ldc	a
+ldc	b
+add
+ldc c
+add
+ldc d
+add
+ldc e
+add
+ldc f
+add
+stl 0
+HALT
+a: SET 2
+b: SET 4
+c: SET 6
+d: SET 8
+e: SET 10
+f: SET 12

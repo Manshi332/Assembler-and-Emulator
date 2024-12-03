@@ -1,0 +1,12 @@
+0def:
+ldc     10      ; Load 10 into A (Initialize with the value 10)
+stl     0       ; Store A (10) in memory[SP + 0] as original value
+ldl     0       ; Load memory[SP + 0] (original value 10) into A
+shl
+add 5             ; Shift A left by 1 (A = A * 2, now A is 20)
+stl     1       ; Store A (20) in memory[SP + 1] as doubled value
+ldl     0       ; Load memory[SP + 0] (original value 10) into A
+shr             ; Shift A right by 1 (A = A / 2, now A is 5)
+stl     2       ; Store A (5) in memory[SP + 2] as halved value
+error
+HALT            ; Stop execution
